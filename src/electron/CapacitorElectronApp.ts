@@ -176,7 +176,7 @@ export class CapacitorElectronApp {
     } else {
       //await loadWebApp(thisRef.mainWindowReference);
       await electronServe({
-        directory: this.config.appFolder,
+        directory: thisRef.config.appFolder,
         scheme: "capacitor-electron",
       });
     }

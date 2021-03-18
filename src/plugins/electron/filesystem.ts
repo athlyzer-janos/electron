@@ -38,7 +38,11 @@ export class FilesystemPluginElectron
       name: "Filesystem",
       platforms: ["electron"],
     });
-    this.fileLocations = { DRIVE_ROOT: "", DOCUMENTS: "", EXTERNAL_STORAGE : "" };
+    this.fileLocations = {
+      DRIVE_ROOT: "",
+      DOCUMENTS: "",
+      EXTERNAL_STORAGE: "",
+    };
 
     let path = require("path");
     let os = require("os");
@@ -49,24 +53,24 @@ export class FilesystemPluginElectron
     }
 
     const posix = path.posix;
-    const fs = require('fs');
-    const electron = require('electron');
+    const fs = require("fs");
+    const electron = require("electron");
     const documentspath = path
-      .join(posix.normalize(electron.app.getPath('userData')), '/videos')
-      .replace(/\\/g, '/');
+      .join(posix.normalize(electron.app.getPath("userData")), "/videos")
+      .replace(/\\/g, "/");
     if (!fs.existsSync(documentspath)) {
       fs.mkdirSync(documentspath);
     }
     const videosexportpath = path
-      .join(posix.normalize(electron.app.getPath('videos')), '/athlyzer')
-      .replace(/\\/g, '/');
+      .join(posix.normalize(electron.app.getPath("videos")), "/athlyzer")
+      .replace(/\\/g, "/");
     if (!fs.existsSync(videosexportpath)) {
       fs.mkdirSync(videosexportpath);
     }
 
     //this.fileLocations[FilesystemDirectory.Documents] = path.join(os.homedir(), `Documents`) + path.sep;
     this.fileLocations[FilesystemDirectory.Documents] = documentspath;
-    this.fileLocations[FilesystemDirectory.EXTERNAL_STORAGE] = videosexportpath;
+    this.fileLocations[FilesystemDirectory.ExternalStorage] = videosexportpath;
 
     this.NodeFS = require("fs");
     this.Path = path;

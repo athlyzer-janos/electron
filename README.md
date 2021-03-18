@@ -12,9 +12,9 @@ Capacitor community support for the Electron platform.
   <a href="https://www.electronjs.org/releases/stable?version=9"><img src="https://img.shields.io/badge/supported%20electron%20version-~10.3.1-blue?style=flat-square" /></a>
 </p>
 <p align="center">
-  <a href="https://npmjs.com/package/@capacitor-community/electron"><img src="https://img.shields.io/npm/v/@capacitor-community/electron.svg?style=flat-square" /></a>
-  <a href="https://npmjs.com/package/@capacitor-community/electron"><img alt="npm" src="https://img.shields.io/npm/dw/@capacitor-community/electron?style=flat-square"></a>
-  <a href="https://npmjs.com/package/@capacitor-community/electron"><img src="https://img.shields.io/npm/l/@capacitor-community/electron.svg?style=flat-square" /></a>
+  <a href="https://npmjs.com/package/@athlyzer/capacitor-community-electron"><img src="https://img.shields.io/npm/v/@athlyzer/capacitor-community-electron.svg?style=flat-square" /></a>
+  <a href="https://npmjs.com/package/@athlyzer/capacitor-community-electron"><img alt="npm" src="https://img.shields.io/npm/dw/@athlyzer/capacitor-community-electron?style=flat-square"></a>
+  <a href="https://npmjs.com/package/@athlyzer/capacitor-community-electron"><img src="https://img.shields.io/npm/l/@athlyzer/capacitor-community-electron.svg?style=flat-square" /></a>
   <a href="https://github.com/capacitor-community/electron"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/capacitor-community/electron/CI/main?style=flat-square"></a>
 </p>
 

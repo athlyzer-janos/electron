@@ -5,13 +5,13 @@ The Capacitor Community Electron platform comes with a utility for enabling easy
 ## How To Implement
 
 1. Navigate to the `WEB_APP_PROJECT_ROOT/electron/src/index.ts` file in your editor.
-2. Import the utility function from `@capacitor-community/electron` like so:
+2. Import the utility function from `@athlyzer/capacitor-community-electron` like so:
 
 ```typescript
 import {
   createCapacitorElectronApp,
   createCapacitorElectronDeepinking,
-} from "@capacitor-community/electron";
+} from "@athlyzer/capacitor-community-electron";
 ```
 
 3. Make the call after your `createCapacitorElectronApp()` call. For example:

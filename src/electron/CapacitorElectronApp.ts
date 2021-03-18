@@ -22,8 +22,6 @@ const EventEmitter = require("events");
 class CapElectronEmitter extends EventEmitter {}
 const theEmitter = new CapElectronEmitter();
 
-
-
 export class CapacitorElectronApp {
   private mainWindowReference: Electron.BrowserWindow | null = null;
   private splashScreenReference: CapacitorSplashScreen | null = null;
@@ -31,7 +29,7 @@ export class CapacitorElectronApp {
   // @ts-ignore
   private devServerUrl: string | null = null;
   private config: CapacitorElectronConfig = {
-    appFolder : path.join(app.getAppPath(), "app"),
+    appFolder: path.join(app.getAppPath(), "app"),
     trayMenu: {
       useTrayMenu: false,
       trayIconPath: path.join(
@@ -258,7 +256,7 @@ export class ElectronCapacitorDeeplinking {
 
     const instanceLock = app.requestSingleInstanceLock();
     if (instanceLock) {
-      app.on("second-instance", (_event, argv) => {
+      app.on("second-instance", (_event: any, argv: any) => {
         if (process.platform == "win32") {
           this.lastPassedUrl = argv.slice(1).toString();
           this.internalHandler(this.lastPassedUrl);
@@ -277,7 +275,7 @@ export class ElectronCapacitorDeeplinking {
 
     if (!app.isDefaultProtocolClient(this.customProtocol))
       app.setAsDefaultProtocolClient(this.customProtocol);
-    app.on("open-url", (event, url) => {
+    app.on("open-url", (event: any, url: any) => {
       event.preventDefault();
       this.lastPassedUrl = url;
       this.internalHandler(url);

@@ -1,5 +1,5 @@
 import { app } from "electron";
-import { createCapacitorElectronApp } from "@capacitor-community/electron";
+import { createCapacitorElectronApp } from "@athlyzer/capacitor-community-electron";
 
 // The MainWindow object can be accessed via myCapacitorApp.getMainWindow()
 const myCapacitorApp = createCapacitorElectronApp();

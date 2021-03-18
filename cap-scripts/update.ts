@@ -32,7 +32,7 @@ export async function doUpdate() {
   const copyToPath = join(cwd, "electron", "plugins");
   removeSync(copyToPath);
   mkdirSync(copyToPath);
-  const filenames = [];
+  const filenames: string[] = [];
   for (let i = 0; i < pluginPaths.length; i++) {
     const path = `${pluginPaths[i]}`;
     let filename = path.substr(path.lastIndexOf(sep) + 1);
@@ -40,7 +40,7 @@ export async function doUpdate() {
     copyFileSync(realpathSync(path), join(copyToPath, filename));
     filenames.push(filename);
   }
-  let preloaderString = `require('./node_modules/@capacitor-community/electron/dist/electron-bridge.js');`;
+  let preloaderString = `require('./node_modules/@athlyzer/capacitor-community-electron/dist/electron-bridge.js');`;
   for (const fname of filenames) {
     preloaderString += `require('./plugins/${fname}');`;
   }

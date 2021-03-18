@@ -29,7 +29,7 @@ export class CapacitorElectronApp {
   // @ts-ignore
   private devServerUrl: string | null = null;
   private config: CapacitorElectronConfig = {
-    appFolder: path.join(app.getAppPath(), "app"),
+    appFolder: "",
     trayMenu: {
       useTrayMenu: false,
       trayIconPath: path.join(
@@ -65,8 +65,14 @@ export class CapacitorElectronApp {
     },
   };
 
+  loadWebApp;
+
   constructor(config?: CapacitorElectronConfig) {
     if (config) this.config = deepMerge(this.config, [config]);
+    this.loadWebApp = electronServe({
+      directory: this.config.appFolder,
+      scheme: "capacitor-electron",
+    });
 
     const capConfigPath = path.join(app.getAppPath(), "capacitor.config.json");
     if (fs.existsSync(capConfigPath)) {
@@ -174,11 +180,7 @@ export class CapacitorElectronApp {
         thisRef.devServerUrl
       );
     } else {
-      //await loadWebApp(thisRef.mainWindowReference);
-      await electronServe({
-        directory: thisRef.config.appFolder,
-        scheme: "capacitor-electron",
-      });
+      await thisRef.loadWebApp(thisRef.mainWindowReference);
     }
   }
 

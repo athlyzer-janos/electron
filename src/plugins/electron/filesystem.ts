@@ -55,14 +55,17 @@ export class FilesystemPluginElectron
     const posix = path.posix;
     const fs = require("fs");
     const electron = require("electron");
+
+    console.log("electron", electron);
+
     const documentspath = path
-      .join(posix.normalize(electron.app.getPath("userData")), "/videos")
+      .join(posix.normalize(electron.remote.app.getPath("userData")), "/videos")
       .replace(/\\/g, "/");
     if (!fs.existsSync(documentspath)) {
       fs.mkdirSync(documentspath);
     }
     const videosexportpath = path
-      .join(posix.normalize(electron.app.getPath("videos")), "/athlyzer")
+      .join(posix.normalize(electron.remote.app.getPath("videos")), "/athlyzer")
       .replace(/\\/g, "/");
     if (!fs.existsSync(videosexportpath)) {
       fs.mkdirSync(videosexportpath);

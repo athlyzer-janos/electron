@@ -22,10 +22,7 @@ const EventEmitter = require("events");
 class CapElectronEmitter extends EventEmitter {}
 const theEmitter = new CapElectronEmitter();
 
-const loadWebApp = electronServe({
-  directory: path.join(app.getAppPath(), "app"),
-  scheme: "capacitor-electron",
-});
+
 
 export class CapacitorElectronApp {
   private mainWindowReference: Electron.BrowserWindow | null = null;
@@ -34,6 +31,7 @@ export class CapacitorElectronApp {
   // @ts-ignore
   private devServerUrl: string | null = null;
   private config: CapacitorElectronConfig = {
+    appFolder : path.join(app.getAppPath(), "app"),
     trayMenu: {
       useTrayMenu: false,
       trayIconPath: path.join(
@@ -178,7 +176,11 @@ export class CapacitorElectronApp {
         thisRef.devServerUrl
       );
     } else {
-      await loadWebApp(thisRef.mainWindowReference);
+      //await loadWebApp(thisRef.mainWindowReference);
+      await electronServe({
+        directory: this.config.appFolder,
+        scheme: "capacitor-electron",
+      });
     }
   }
 

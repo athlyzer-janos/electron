@@ -56,16 +56,15 @@ export class FilesystemPluginElectron
     const fs = require("fs");
     const electron = require("electron");
 
-    console.log("electron", electron);
 
     const documentspath = path
-      .join(posix.normalize(electron.remote.app.getPath("userData")), "/videos")
+      .join(posix.normalize(electron.remote.app.getPath("userData")), "/videos/")
       .replace(/\\/g, "/");
     if (!fs.existsSync(documentspath)) {
       fs.mkdirSync(documentspath);
     }
     const videosexportpath = path
-      .join(posix.normalize(electron.remote.app.getPath("videos")), "/athlyzer")
+      .join(posix.normalize(electron.remote.app.getPath("videos")), "/athlyzer/")
       .replace(/\\/g, "/");
     if (!fs.existsSync(videosexportpath)) {
       fs.mkdirSync(videosexportpath);
@@ -74,6 +73,9 @@ export class FilesystemPluginElectron
     //this.fileLocations[FilesystemDirectory.Documents] = path.join(os.homedir(), `Documents`) + path.sep;
     this.fileLocations[FilesystemDirectory.Documents] = documentspath;
     this.fileLocations[FilesystemDirectory.ExternalStorage] = videosexportpath;
+    console.log("electron videosexportpath", videosexportpath);
+    console.log("electron documentspath",documentspath);
+
 
     this.NodeFS = require("fs");
     this.Path = path;
@@ -169,7 +171,7 @@ export class FilesystemPluginElectron
             return;
           }
 
-          resolve();
+          resolve({});
         }
       );
     });
@@ -188,7 +190,7 @@ export class FilesystemPluginElectron
           return;
         }
 
-        resolve();
+        resolve({});
       });
     });
   }
@@ -207,7 +209,7 @@ export class FilesystemPluginElectron
           return;
         }
 
-        resolve();
+        resolve({});
       });
     });
   }
@@ -237,7 +239,7 @@ export class FilesystemPluginElectron
                   return;
                 }
 
-                resolve();
+                resolve({});
               });
             });
           } else {
@@ -406,11 +408,11 @@ export class FilesystemPluginElectron
             return;
           }
 
-          resolve();
+          resolve({});
         });
       } else {
         copyRecursively(fromPath, toPath)
-          .then(() => resolve())
+          .then(() => resolve({}))
           .catch(reject);
       }
     });

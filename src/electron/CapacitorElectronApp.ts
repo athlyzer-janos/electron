@@ -90,6 +90,7 @@ export class CapacitorElectronApp {
     const neededBrowserWindowConfig = {
       show: false,
       webPreferences: {
+        contextIsolation: false,
         nodeIntegration: true,
         enableRemoteModule: true,
         // Use preload to inject the electron varriant overrides for capacitor plugins.
